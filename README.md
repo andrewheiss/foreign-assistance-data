@@ -10,7 +10,7 @@ This repository contains everything needed to create your own live copy of the d
 
 1. **Build a database**: Datasette uses SQLite as a backend. It has a helper utility for converting a folder of CSVs into an SQLite database, but it has some issues with different versions of Python and pandas and other dependencies. To simplify things, I've provided a `uv` project with all dependencies marked, as well as a bash script for downloading the raw CSVs, unzipping them, and automatically processing them.
 
-   1. Install `uv`
+   1. [Install `uv`](https://docs.astral.sh/uv/)
 
    2. Navigate to the `data-processing` folder here and install the project:
 
