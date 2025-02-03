@@ -1,1 +1,5 @@
 data/*
+
+# Raw data
+data-processing/data-raw*
+data-processing/data-raw*.zip

@@ -1,6 +1,3 @@
-# Unzipped raw data
-data-raw*/
-
 # Python-generated files
 __pycache__/
 *.py[oc]
