@@ -1,0 +1,38 @@
+services:
+  datasette:
+    platform: linux/amd64  # Need to include this when building on AMD-based macOS
+    image: datasetteproject/datasette
+    ports:
+      - "8001:8001"
+    volumes:
+      - ../data:/mnt
+    command: [
+      "datasette",
+      "/mnt/2025-02-03_foreign-assistance.db",
+      "--port", "8001",
+      "--host", "0.0.0.0",
+      "--cors"
+    ]
+    networks:
+      - caddy
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "../sites/:/var/www/html/:ro"
+      - "./caddyfiles/dev/:/etc/caddy/"
+      # - "./caddyfiles/prod/:/etc/caddy/"
+
+      # Caddy needs to mount /data and /config for persisted data
+      - "./caddy/data/:/data/"
+      - "./caddy/config/:/config/"
+    networks:
+      - caddy
+    restart: unless-stopped
+
+networks:
+  caddy:

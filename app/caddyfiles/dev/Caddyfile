@@ -1,0 +1,10 @@
+{
+	# E-mail for Let's Encrypt
+	email andrew@andrewheiss.com
+}
+
+foreignassistance-data.localhost {
+	tls internal
+	encode gzip
+	reverse_proxy datasette:8001
+}
